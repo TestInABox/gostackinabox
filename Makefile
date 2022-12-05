@@ -7,3 +7,6 @@ test:
 coverage: test
 	go tool cover -html=.coverage
 	go tool cover -func=.coverage
+
+lint:
+	golangci-lint run

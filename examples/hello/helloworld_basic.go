@@ -27,8 +27,10 @@ func NewHelloWorldBasicService() (s service.Service, err error) {
             Port: "",
         },
     )
-     if err != nil {
+     if err == nil {
         hwb.FuncHandler = hwb.HelloWorldHandler
+     } else {
+        log.Printf("Failed to initialize service: %#v", err)
      }
      s = hwb
      return
@@ -36,7 +38,7 @@ func NewHelloWorldBasicService() (s service.Service, err error) {
 
 func (hwb *HelloWorldBasicService) HelloWorldHandler(request *common.HttpCall) (result *common.HttpReply, err error) {
     log.Printf("Hello World Basic Service FuncHandler")
-    msg := "hello world!"
+    msg := "basic hello world!"
     expectedLength := int64(len(msg))
     result = &common.HttpReply{
         Status: common.GetHttpStatus(200),

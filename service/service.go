@@ -87,7 +87,8 @@ func (sh *ServiceHandler) MethodHandler(request *common.HttpCall) (result *commo
 }
 
 func (sh *ServiceHandler) DefaultFuncHandler(request *common.HttpCall) (result *common.HttpReply, err error) {
-    msg := "Unhandled"
+    log.Printf("Default Handler Called")
+    msg := "Unhandled - Default Handler"
     expectedLength := int64(len(msg))
     result = &common.HttpReply{
         Status: common.GetHttpStatus(500),

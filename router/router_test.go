@@ -59,7 +59,7 @@ func Test_Router_Router(t *testing.T) {
         func(t *testing.T) {
             irt := router.New()
             if irt == nil {
-                t.Errorf("New generated a nil pointer")
+                t.Fatal("New generated a nil pointer")
             }
             if irt.RequestHandlers == nil {
                 t.Errorf("New did not create the route table")

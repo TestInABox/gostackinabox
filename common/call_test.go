@@ -15,7 +15,7 @@ func Test_Common_HttpCall(t *testing.T) {
         Headers: http.Header{},
         Request: &http.Request{},
     }
-    if hc == nil {
-        t.Error("Unexpected nil")
+    if hc.Method != "test" {
+        t.Errorf("Failed to set method")
     }
 }

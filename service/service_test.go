@@ -90,10 +90,13 @@ func TestService(t *testing.T) {
                     scenario.name,
                     func(t *testing.T) {
                         handler := service.ServiceHandler{}
-                        handler.Init(
+                        initErr := handler.Init(
                             scenario.name,
                             &common.BasicServerURI{},
                         )
+                        if initErr != nil {
+                            t.Errorf("Failed to initialize the service handler: %#v", initErr)
+                        }
 
                         parameters := scenario.setup(t)
 
@@ -157,13 +160,16 @@ func TestService(t *testing.T) {
                     scenario.name,
                     func(t *testing.T) {
                         handler := service.ServiceHandler{}
-                        handler.Init(
+                        initErr := handler.Init(
                             scenario.name,
                             &common.BasicServerURI{
                                 Protocol: "http",
                                 Host: "example.com",
                             },
                         )
+                        if initErr != nil {
+                            t.Errorf("Failed to initialize the service handler: %#v", initErr)
+                        }
 
                         parameters := scenario.setup(t)
 

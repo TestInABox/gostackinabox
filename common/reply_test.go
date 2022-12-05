@@ -12,7 +12,7 @@ func Test_Common_HttpReply(t *testing.T) {
         Status: common.HttpStatus_RouteNotHandled,
         Headers: http.Header{},
     }
-    if hr == nil {
-        t.Error("Unexpected nil")
+    if hr.Status != common.HttpStatus_RouteNotHandled {
+        t.Errorf("Failed to set Status")
     }
 }
